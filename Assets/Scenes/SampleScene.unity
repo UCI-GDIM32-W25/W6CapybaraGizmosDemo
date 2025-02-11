@@ -1379,6 +1379,7 @@ GameObject:
   - component: {fileID: 1366108213}
   - component: {fileID: 1366108217}
   - component: {fileID: 1366108216}
+  - component: {fileID: 1366108218}
   m_Layer: 0
   m_Name: Capybara
   m_TagString: Untagged
@@ -1399,7 +1400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 4
-  _force: {x: 2, y: 4, z: 0}
+  _force: 2
   _spriteRenderer: {fileID: 1366108214}
 --- !u!95 &1366108213
 Animator:
@@ -1551,6 +1552,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4375
+--- !u!114 &1366108218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366108211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f07fc1c03904bf7920b568e4bf6e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1366108217}
 --- !u!1 &1590682315
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,6 +1577,8 @@ GameObject:
   - component: {fileID: 1590682316}
   - component: {fileID: 1590682319}
   - component: {fileID: 1590682318}
+  - component: {fileID: 1590682320}
+  - component: {fileID: 1590682321}
   m_Layer: 0
   m_Name: Fruit
   m_TagString: Untagged
@@ -1699,6 +1715,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1590682320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590682315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f07fc1c03904bf7920b568e4bf6e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _collider: {fileID: 1590682318}
+--- !u!114 &1590682321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590682315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01e90327f98d490cb84c09cca034f6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody: {fileID: 1590682319}
 --- !u!1 &2124982193
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,35 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Capybara : MonoBehaviour
 {
     [SerializeField] private float _speed = 1.0f;
-    [SerializeField] private Vector3 _force = Vector3.up;
+    [SerializeField] private float _force = 4.0f;
     [SerializeField] private SpriteRenderer _spriteRenderer;
+
+    private Vector3 _lastMovementDirection;
 
     private void Update ()
     {
+        Vector3 newDir = Vector3.zero;
+
         if(Input.GetKey(KeyCode.W))
         {
-            transform.Translate(Vector3.up * _speed * Time.deltaTime);
+            newDir += Vector3.up;
         }
 
         if (Input.GetKey(KeyCode.A))
         {
             _spriteRenderer.flipX = true;
-            transform.Translate(Vector3.left * _speed * Time.deltaTime);
+            newDir += Vector3.left;
         }
 
         if (Input.GetKey(KeyCode.S))
         {
-            transform.Translate(Vector3.down * _speed * Time.deltaTime);
+            newDir += Vector3.down;
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             _spriteRenderer.flipX = false;
-            transform.Translate(Vector3.right * _speed * Time.deltaTime);
+            newDir += Vector3.right;
+        }
+
+        transform.Translate(newDir * _speed * Time.deltaTime);
+
+        if(newDir != Vector3.zero) {
+            _lastMovementDirection = newDir;
         }
     }
 
@@ -38,7 +46,14 @@ public class Capybara : MonoBehaviour
         Rigidbody2D fruit = collision.rigidbody;
         if(fruit != null)
         {
-            fruit.AddForce(_force, ForceMode2D.Impulse);
+            fruit.AddForce(_lastMovementDirection * _force, ForceMode2D.Impulse);
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        // draws the direction the capybara is pushing the fruit in
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(transform.position, _lastMovementDirection * _force);
     }
 }
